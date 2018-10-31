@@ -16,7 +16,7 @@ async function getSite() {
 /**
  * Post Route
  */
-app.get("/posts",async (req, res) => {
+app.get("/api/posts",async (req, res) => {
 	try{
 		const site = await getSite();
 		try{
@@ -31,6 +31,29 @@ app.get("/posts",async (req, res) => {
 		return res.json(e);
 	}
 
+
+
+});
+
+app.get( "/", async(req, res) => {
+	const server = require( 'react-dom/server');
+	const React = require( 'react');
+	const { renderToString } =  server;
+	const cwd = process.cwd();
+	const postName = 'hello-world';
+	const path = cwd + '/content/wp-json' + '/posts/' + postName + '.json';
+	const exists = fs.existsSync(path);
+	if (exists) {
+		const post = require(path).data;
+		return res.send(renderToString( React.createElement('article',{
+				id: `post-${post.id}`
+			},[
+				React.createElement('h2', {}, post.title.rendered),
+				React.createElement('div', {dangerouslySetInnerHTML: {__html: post.content.rendered}}, ),
+			]
+		)));
+
+	}
 
 
 });
@@ -50,7 +73,7 @@ const notFound = {
 
 
 
-app.get("/posts/:postName", async (req, res) => {
+app.get("/api/posts/:postName", async (req, res) => {
 	const cwd = process.cwd();
   	const {postName} = req.params;
   	const path = cwd + '/content/wp-json' + '/posts/' + postName + '.json';
