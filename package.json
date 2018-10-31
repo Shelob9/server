@@ -1,0 +1,25 @@
+{
+  "name": "something",
+  "version": "1.0.0",
+  "description": "WordPress REST API Proxy",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm run build:watch\" \"npm run start:dev\"",
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js",
+    "build": "",
+    "build:watch": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/MichalZalecki/docker-compose-node-postgres#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.17.3"
+  }
+}
