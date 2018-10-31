@@ -35,12 +35,12 @@ app.get("/api/posts",async (req, res) => {
 
 });
 
-app.get( "/", async(req, res) => {
+app.get( "/posts/:postName", async(req, res) => {
 	const server = require( 'react-dom/server');
 	const React = require( 'react');
 	const { renderToString } =  server;
 	const cwd = process.cwd();
-	const postName = 'hello-world';
+	const {postName} = req.params;
 	const path = cwd + '/content/wp-json' + '/posts/' + postName + '.json';
 	const exists = fs.existsSync(path);
 	if (exists) {
@@ -54,8 +54,6 @@ app.get( "/", async(req, res) => {
 		)));
 
 	}
-
-
 });
 
 
