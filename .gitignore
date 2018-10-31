@@ -1,2 +1,5 @@
 node_modules
 dist
+content
+!content/wp-json/posts/hello-world.json
+!content/wp-json/users/1.json
