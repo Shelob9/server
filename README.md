@@ -9,10 +9,6 @@ Something I'm working on - an express.js -- proxy for WordPress and WordPress-li
 * Run server
     * `docker-compose up`
 
-* Run
-docker-compose up
-
-
 ## Prior Art
 
 Forked from [https://github.com/MichalZalecki/docker-compose-node-postgres.git](https://github.com/MichalZalecki/docker-compose-node-postgres.git).
